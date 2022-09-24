@@ -1,0 +1,81 @@
+*{
+    font-family: 'Roboto', sans-serif !important;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.jogo{
+    width: 800px;
+    height: 500px;
+    margin-top: 25px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: bisque;
+}
+
+hr{
+    color: #e5e5e5; 
+}
+
+.titulo{
+    /*border: 1px solid green;*/
+    text-align: center;
+    font-size: 50px;
+}
+
+.tabuleiro{
+    width: 750px;
+    height: 420px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.forca-botao{
+    background-color: bisque;
+    display: flex;
+    justify-content: space-between;
+    width: 750px;
+    height: 300px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.forca img{
+    height: 300px;
+}
+
+.btn-escolher-palavra{
+    height: 40px;
+    width: 175px;
+    border-radius: 8%;
+    border: 1px solid #a8a6a6;
+    background-color: rgb(58, 167, 58);
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    margin-top: 18px;
+}
+
+.palavra-escolhida{
+    margin: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.teclado{
+    margin-right: auto;
+    margin-left: auto;
+    width: 450px;
+}
+
+.teclado > button{
+    height: 25px;
+    width: 25px;
+    margin-left: 7.5px;
+    margin-bottom: 7.5px ;
+    border: 1px solid #a8a6a6;
+    border-radius: 100%;
+}
+
