@@ -30,7 +30,7 @@ function App() {
 
     function EscolherPalavra(){
         const palavra = 'Aula'
-        const qntTraços = palavra.length
+        const qntTraçoss = palavra.length
         const tracinhos = []
     
         for(let i=0; i<qntTraços; i++) {
