@@ -3,9 +3,14 @@ import { useState } from "react"
 import imginitial from "./assets/forca0.png"
 import "./css/reset.css"
 import "./css/style.css"
-//import Palavra from ".Palavra"
+import Palavra from "./Palavra"
 
-
+function Letra(prop){
+    return(
+        <button onClick={()=>(prop.comparaletra(prop.chave))}>{prop.letra}</button>
+    )
+    
+}
 
 function Traços(prop){
     return(
@@ -15,39 +20,52 @@ function Traços(prop){
     )
 }
 
-function Letra(prop){
-    return(
-        <button>{prop.letra}</button>
-    )
-    
-}
+function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
 
 function App() {
     const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     const arrTraços = ['close-outline']
+    const palavraVazia = '' 
     const [traços, setTraços] = React.useState(arrTraços)
+    const [palavraEscolhida, setPalavraEscolhida] = React.useState(palavraVazia)
 
     function EscolherPalavra(){
-        const palavra = 'Aula'
-        const qntTraçoss = palavra.length
+        const index = getRandomIntInclusive(0, (Palavra.length))
+        const palavra = Palavra[index]
+        const qntTraços = palavra.length
         const tracinhos = []
-    
+        console.log(palavra)
         for(let i=0; i<qntTraços; i++) {
             tracinhos.push('remove-outline')
         }
 
         setTraços(tracinhos)
+        setPalavraEscolhida(palavra)
         
         return palavra
        
     }
+
+    function ComparaLetra(index){
+        const letra = alfabeto[index]
+        const temLetra = palavraEscolhida.includes(letra)
+
+
+        if(temLetra){
+            traços[index] = letra
+            setTraços(traços)
+        }else{
+            alert("tem outra letra")
+            //fazer lógica imagem
+        }
+        
+    }
     
-
-    //const arrVazio = EscolherPalavra()
-
-    //console.log(arrVazio)
-
     return (
         <div className="jogo">
             <h1 className="titulo">Jogo da Forca</h1>
@@ -72,7 +90,7 @@ function App() {
                 <div className="teclado">
                         {
                             alfabeto.map(
-                                (p, index) => <Letra letra = {p} key={index}/>
+                                (p, index) => <Letra letra = {p} key={index} comparaletra={ComparaLetra} chave={index}/>
                             )
                         }
                 </div>
