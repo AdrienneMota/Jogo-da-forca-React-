@@ -77,5 +77,11 @@ hr{
     margin-bottom: 7.5px ;
     border: 1px solid #a8a6a6;
     border-radius: 100%;
+    
+}
+
+.letraDesabilitada{   
+    background-color: gray;
+    color:#a8a6a6;
 }
 
