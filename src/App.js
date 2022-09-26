@@ -51,11 +51,14 @@ export default function App() {
     const [palavraEscolhida, setPalavraEscolhida] = React.useState(palavraVazia)
     const [contador, setContador] = React.useState(0)
     const [fim, setFim] = React.useState("palavra-escolhida")
+    const [inputativo, setInputativo] = React.useState('inputDesabilitado')
+    const [chutou, setChutou] = React.useState('')
 
     function ganhou(){
         if(!traços.includes('remove-outline')){
             setFim('ganhou')
             SetInativa(alfabeto)
+            setInputativo('inputDesabilitado')
         }
         else{
             setFim('palavra-escolhida')
@@ -66,13 +69,18 @@ export default function App() {
 
         setFim('palavra-escolhida')
         setContador(0)
+        setInputativo('inputAbilitado')
+        setChutou('')
 
         const index = getRandomIntInclusive(0, (Palavra.length))
         const palavra = Palavra[index]
         const qntTraços = palavra.length
         const tracinhos = []
-
         console.log(palavra)
+
+ 
+
+
         for (let i = 0; i < qntTraços; i++) {
             tracinhos.push('remove-outline')
         }
@@ -106,6 +114,7 @@ export default function App() {
             setForca(erros[newValue])
             if(newValue === 6){
                 setFim('perdeu')
+                setInputativo('inputDesabilitado')
                 SetInativa(alfabeto)
                 const newarr = palavraEscolhida.split('')
                 setTraços(newarr)
@@ -119,6 +128,22 @@ export default function App() {
         SetInativa(newInativa)
         ganhou()
 
+    }
+
+    function ChuteUser(){
+        if(chutou === palavraEscolhida){
+            setFim('ganhou')
+            SetInativa(alfabeto)
+            setInputativo('inputDesabilitado')
+            const newarr = palavraEscolhida.split('')
+            setTraços(newarr)
+        }else{
+            setFim('perdeu')
+            setInputativo('inputDesabilitado')
+            SetInativa(alfabeto)
+            const newarr = palavraEscolhida.split('')
+            setTraços(newarr)
+        }
     }
 
     return (
@@ -152,6 +177,11 @@ export default function App() {
                         )
                     }
 
+                </div>
+                <div className="chute">
+                    <p>Já sei a palavra!</p>
+                    <input className={inputativo} type='texto' onChange={event => setChutou(event.target.value)}/>
+                    <button className="btn-chute" onClick={ChuteUser}>Chutar</button>
                 </div>
             </div>
         </div>

@@ -8,7 +8,7 @@
 
 .jogo{
     width: 800px;
-    height: 500px;
+    height: 550px;
     margin-top: 25px;
     margin-right: auto;
     margin-left: auto;
@@ -27,7 +27,7 @@ hr{
 
 .tabuleiro{
     width: 750px;
-    height: 420px;
+    height: 480px;
     margin-right: auto;
     margin-left: auto;
 }
@@ -69,7 +69,6 @@ hr{
     display: flex;
     justify-content: center;
     color: green;
-
 }
 
 .perdeu{
@@ -93,6 +92,31 @@ hr{
     border: 1px solid #a8a6a6;
     border-radius: 100%;
     
+}
+
+.chute{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;    
+}
+
+.inputAbilitado{
+    border-radius: 5%;
+    outline: none;
+}
+
+.inputDesabilitado{
+    pointer-events: none;
+    background-color: #a8a6a6;
+}
+
+.btn-chute{
+    width: 100px;
+    height: 25px;
 }
 
 .letraDesabilitada{   
