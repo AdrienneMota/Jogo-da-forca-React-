@@ -76,9 +76,12 @@ export default function App() {
         const palavra = Palavra[index]
         const qntTraços = palavra.length
         const tracinhos = []
-        console.log(palavra)
+        const newpalavra = palavra.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+        console.log(newpalavra) 
 
- 
+        if(palavra.includes('ç')){
+            newpalavra.replace('ç', 'c')
+        }
 
 
         for (let i = 0; i < qntTraços; i++) {
@@ -86,7 +89,7 @@ export default function App() {
         }
 
         setTraços(tracinhos)
-        setPalavraEscolhida(palavra)  
+        setPalavraEscolhida(newpalavra  )  
         SetInativa([])   
     }
 
